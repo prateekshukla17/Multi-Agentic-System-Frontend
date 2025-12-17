@@ -78,4 +78,28 @@ export function ChatInterface() {
       newSocket.close();
     };
   }, []);
+
+  const handleSendMessage = () => {
+    if (!input.trim() || !socket || isConnected) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: input,
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    socket.emit('send_message', { message: input });
+    setInput('');
+    setIsTyping(true);
+    setTimeout(scrollToBottom, 100);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
 }
