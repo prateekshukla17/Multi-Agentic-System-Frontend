@@ -1,0 +1,19 @@
+.userMessage {
+  background: linear-gradient(135deg, rgba(255, 192, 203, 0.15) 0%, rgba(255, 255, 0, 0.15) 100%);
+  border-left: 3px solid var(--mantine-color-pink-5);
+}
+
+.assistantMessage {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--mantine-color-blue-5);
+}
+
+@media (prefers-color-scheme: dark) {
+  .userMessage {
+    background: linear-gradient(135deg, rgba(255, 192, 203, 0.1) 0%, rgba(255, 255, 0, 0.1) 100%);
+  }
+
+  .assistantMessage {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
